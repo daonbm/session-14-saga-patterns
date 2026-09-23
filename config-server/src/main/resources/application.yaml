@@ -1,0 +1,23 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+  profiles:
+   active: native
+    # active: default
+  cloud:
+    config:
+      server:
+        ## Solution 01: github link
+        #  git:
+        #    uri: https://github.com/daonbm/ss07-config-files.git
+        #    default-label: main
+        #    clone-on-start: true
+
+        ## Solution 02: internal directory
+       native:
+         search-locations:
+           - file:../config-repos
+           - file:./config-repos

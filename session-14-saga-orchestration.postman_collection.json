@@ -1,0 +1,107 @@
+{
+  "info": {
+    "_postman_id": "session-14-saga-orchestration-uuid",
+    "name": "Session 14 - Saga Orchestration Pattern Demo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "0. Kiểm tra tồn kho ban đầu (Gateway 8090)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8090/api/products",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8090",
+          "path": ["api", "products"]
+        },
+        "description": "Kiểm tra tồn kho sản phẩm ID 1 trước khi bắt đầu demo"
+      },
+      "response": []
+    },
+    {
+      "name": "1. DEMO 1 — Đặt hàng khi TẤT CẢ SERVICE ĐỀU BẬT (Happy Path -> CONFIRMED)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerName\": \"Nguyen Van A\",\n  \"customerEmail\": \"vana@example.com\",\n  \"customerAddress\": \"123 Le Loi, TP.HCM\",\n  \"paymentMethod\": \"VNPAY\",\n  \"items\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 2\n    }\n  ]\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8090/api/orders",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8090",
+          "path": ["api", "orders"]
+        },
+        "description": "Happy Path: Order PENDING -> Product trừ kho 2 cái -> Payment trừ tiền -> Order CONFIRMED"
+      },
+      "response": []
+    },
+    {
+      "name": "2. DEMO 2 — Đặt hàng khi ĐÃ TẮT payment-service (SAGA ROLLBACK BÙ TRỪ KHO)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerName\": \"Tran Thi B (Test khi Payment Service bị tắt)\",\n  \"customerEmail\": \"thib@example.com\",\n  \"customerAddress\": \"456 Nguyen Hue, TP.HCM\",\n  \"paymentMethod\": \"CREDIT_CARD\",\n  \"items\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 3\n    }\n  ]\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8090/api/orders",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8090",
+          "path": ["api", "orders"]
+        },
+        "description": "THỰC TẾ: Tắt payment-service đi. Bấm gửi request này -> Order PENDING -> Product trừ 3 cái -> Gọi Payment lỗi sập service -> SAGA BÙ TRỪ: Gọi lại Product hoàn 3 cái -> Order CANCELLED"
+      },
+      "response": []
+    },
+    {
+      "name": "3. Kiểm tra lại tồn kho sau khi sập Payment Service (Bằng chứng kho được hoàn lại)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8090/api/products",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8090",
+          "path": ["api", "products"]
+        },
+        "description": "Chứng minh số lượng kho vẫn giữ nguyên như sau Demo 1, không bị hụt 3 cái ở Demo 2!"
+      },
+      "response": []
+    },
+    {
+      "name": "4. Kiểm tra danh sách đơn hàng (Xem trạng thái CONFIRMED và CANCELLED)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8090/api/orders",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8090",
+          "path": ["api", "orders"]
+        },
+        "description": "Xem danh sách đơn hàng đã được cập nhật bởi Nhạc trưởng"
+      },
+      "response": []
+    }
+  ]
+}

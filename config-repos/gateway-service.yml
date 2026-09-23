@@ -1,0 +1,37 @@
+server:
+  port: 8090
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: category-route
+          uri: lb://category-service
+          predicates:
+            - Path=/api/greeting/**, /api/categories/**
+        - id: product-route
+          uri: lb://product-service
+          predicates:
+            - Path=/api/products/**
+        - id: order-route
+          uri: lb://order-service
+          predicates:
+            - Path=/api/orders/**
+        - id: payment-route
+          uri: lb://payment-service
+          predicates:
+            - Path=/api/payments/**
+
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.cloud.loadbalancer: DEBUG
