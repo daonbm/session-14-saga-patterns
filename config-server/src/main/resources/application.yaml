@@ -1,0 +1,16 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations:
+            - file:../ss07-config-files
+            - file:./ss07-config-files
+            - file:../project/ss07-config-files

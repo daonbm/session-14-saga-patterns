@@ -1,0 +1,29 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-23T09:43:55.000+07:00  INFO 27868 --- [config-server] [           main] c.s.c.ConfigServerApplication            : Starting ConfigServerApplication v0.0.1-SNAPSHOT using Java 17.0.18 with PID 27868 (D:\Work\Rikkei\Microservice\Demo\project\config-server\build\libs\config-server-0.0.1-SNAPSHOT.jar started by lephu in D:\Work\Rikkei\Microservice\Demo\project\config-server)
+2026-09-23T09:43:55.005+07:00  INFO 27868 --- [config-server] [           main] c.s.c.ConfigServerApplication            : The following 1 profile is active: "native"
+2026-09-23T09:43:56.054+07:00  INFO 27868 --- [config-server] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=e599545d-226f-390c-ab47-021177fcb2a3
+2026-09-23T09:43:57.143+07:00  INFO 27868 --- [config-server] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8888 (http)
+2026-09-23T09:43:57.172+07:00  INFO 27868 --- [config-server] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-23T09:43:57.173+07:00  INFO 27868 --- [config-server] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-09-23T09:43:57.244+07:00  INFO 27868 --- [config-server] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2169 ms
+2026-09-23T09:43:59.817+07:00  INFO 27868 --- [config-server] [           main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-09-23T09:44:00.918+07:00  INFO 27868 --- [config-server] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8888 (http) with context path '/'
+2026-09-23T09:44:02.279+07:00  INFO 27868 --- [config-server] [           main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-09-23T09:44:02.334+07:00  INFO 27868 --- [config-server] [           main] c.s.c.ConfigServerApplication            : Started ConfigServerApplication in 9.032 seconds (process running for 9.551)
+2026-09-23T09:44:04.067+07:00  INFO 27868 --- [config-server] [nio-8888-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-23T09:44:04.068+07:00  INFO 27868 --- [config-server] [nio-8888-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-09-23T09:44:04.070+07:00  INFO 27868 --- [config-server] [nio-8888-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-09-23T09:44:04.230+07:00  INFO 27868 --- [config-server] [nio-8888-exec-2] o.s.c.c.s.e.NativeEnvironmentRepository  : Adding property source: Config resource 'file [..\ss07-config-files\discovery-server.yml]' via location 'file:../ss07-config-files/'
+2026-09-23T09:45:32.706+07:00  INFO 27868 --- [config-server] [nio-8888-exec-3] o.s.c.c.s.e.NativeEnvironmentRepository  : Adding property source: Config resource 'file [..\ss07-config-files\order-service.yml]' via location 'file:../ss07-config-files/'
+2026-09-23T09:45:42.962+07:00  INFO 27868 --- [config-server] [nio-8888-exec-4] o.s.c.c.s.e.NativeEnvironmentRepository  : Adding property source: Config resource 'file [..\ss07-config-files\payment-service.yml]' via location 'file:../ss07-config-files/'
+2026-09-23T09:47:41.692+07:00  INFO 27868 --- [config-server] [nio-8888-exec-7] o.s.c.c.s.e.NativeEnvironmentRepository  : Adding property source: Config resource 'file [..\ss07-config-files\inventory-service.yml]' via location 'file:../ss07-config-files/'
+2026-09-23T09:50:48.079+07:00  INFO 27868 --- [config-server] [nio-8888-exec-9] o.s.c.c.s.e.NativeEnvironmentRepository  : Adding property source: Config resource 'file [..\ss07-config-files\payment-service.yml]' via location 'file:../ss07-config-files/'

@@ -1,0 +1,538 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-23T09:47:43.326+07:00  INFO 15828 --- [inventory-service] [           main] com.session14.saga.SagaDemoApplication   : Starting SagaDemoApplication v0.0.1-SNAPSHOT using Java 17.0.18 with PID 15828 (D:\Work\Rikkei\Microservice\Demo\project\inventory-service\build\libs\inventory-service-0.0.1-SNAPSHOT.jar started by lephu in D:\Work\Rikkei\Microservice\Demo\project\inventory-service)
+2026-09-23T09:47:43.329+07:00 DEBUG 15828 --- [inventory-service] [           main] com.session14.saga.SagaDemoApplication   : Running with Spring Boot v4.1.1, Spring v7.0.9
+2026-09-23T09:47:43.330+07:00  INFO 15828 --- [inventory-service] [           main] com.session14.saga.SagaDemoApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-09-23T09:47:43.382+07:00  INFO 15828 --- [inventory-service] [           main] o.s.c.c.c.ConfigServerConfigDataLoader   : Fetching config from server at : http://localhost:8888
+2026-09-23T09:47:43.382+07:00  INFO 15828 --- [inventory-service] [           main] o.s.c.c.c.ConfigServerConfigDataLoader   : Located environment: name=inventory-service, profiles=[default], label=null, version=null, state=null
+2026-09-23T09:47:44.302+07:00  INFO 15828 --- [inventory-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-23T09:47:44.432+07:00  INFO 15828 --- [inventory-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 118 ms. Found 1 JPA repository interface.
+2026-09-23T09:47:44.827+07:00  INFO 15828 --- [inventory-service] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=2246e012-935f-3aca-8753-9142d28c7e4b
+2026-09-23T09:47:45.367+07:00  INFO 15828 --- [inventory-service] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8084 (http)
+2026-09-23T09:47:45.386+07:00  INFO 15828 --- [inventory-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-23T09:47:45.387+07:00  INFO 15828 --- [inventory-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-09-23T09:47:45.439+07:00  INFO 15828 --- [inventory-service] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2052 ms
+2026-09-23T09:47:45.937+07:00  INFO 15828 --- [inventory-service] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-23T09:47:46.038+07:00  INFO 15828 --- [inventory-service] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-09-23T09:47:46.871+07:00  INFO 15828 --- [inventory-service] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-23T09:47:46.934+07:00  INFO 15828 --- [inventory-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-23T09:48:00.937+07:00  INFO 15828 --- [inventory-service] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn1: url=jdbc:h2:file:./data/inventory-db user=SA
+2026-09-23T09:48:00.942+07:00  INFO 15828 --- [inventory-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-23T09:48:01.077+07:00  INFO 15828 --- [inventory-service] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/inventory-db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: INVENTORY-DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-23T09:48:03.167+07:00  INFO 15828 --- [inventory-service] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-23T09:48:03.303+07:00  INFO 15828 --- [inventory-service] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-23T09:48:04.518+07:00  INFO 15828 --- [inventory-service] [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-09-23T09:48:09.285+07:00  INFO 15828 --- [inventory-service] [           main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-09-23T09:48:11.953+07:00  INFO 15828 --- [inventory-service] [           main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-09-23T09:48:11.986+07:00  INFO 15828 --- [inventory-service] [           main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestClient.
+2026-09-23T09:48:12.100+07:00  WARN 15828 --- [inventory-service] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-09-23T09:48:12.115+07:00  INFO 15828 --- [inventory-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 3 endpoints beneath base path '/actuator'
+2026-09-23T09:48:12.424+07:00  INFO 15828 --- [inventory-service] [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2026-09-23T09:48:12.520+07:00  INFO 15828 --- [inventory-service] [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2026-09-23T09:48:12.530+07:00  INFO 15828 --- [inventory-service] [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2026-09-23T09:48:12.551+07:00  INFO 15828 --- [inventory-service] [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2026-09-23T09:48:12.552+07:00  INFO 15828 --- [inventory-service] [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2026-09-23T09:48:12.552+07:00  INFO 15828 --- [inventory-service] [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2026-09-23T09:48:12.552+07:00  INFO 15828 --- [inventory-service] [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2026-09-23T09:48:12.553+07:00  INFO 15828 --- [inventory-service] [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2026-09-23T09:48:12.553+07:00  INFO 15828 --- [inventory-service] [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2026-09-23T09:48:12.553+07:00  INFO 15828 --- [inventory-service] [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2026-09-23T09:48:14.060+07:00  INFO 15828 --- [inventory-service] [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2026-09-23T09:48:14.064+07:00  INFO 15828 --- [inventory-service] [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2026-09-23T09:48:14.066+07:00  INFO 15828 --- [inventory-service] [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2026-09-23T09:48:14.069+07:00  INFO 15828 --- [inventory-service] [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1790131694068 with initial instances count: 2
+2026-09-23T09:48:14.074+07:00  INFO 15828 --- [inventory-service] [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application INVENTORY-SERVICE with eureka with status UP
+2026-09-23T09:48:14.074+07:00  INFO 15828 --- [inventory-service] [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1790131694074, current=UP, previous=STARTING]
+2026-09-23T09:48:14.076+07:00  INFO 15828 --- [inventory-service] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_INVENTORY-SERVICE/localhost:inventory-service:8084: registering service...
+2026-09-23T09:48:14.108+07:00  INFO 15828 --- [inventory-service] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8084 (http) with context path '/'
+2026-09-23T09:48:14.110+07:00  INFO 15828 --- [inventory-service] [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8084
+2026-09-23T09:48:14.137+07:00  INFO 15828 --- [inventory-service] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_INVENTORY-SERVICE/localhost:inventory-service:8084 - registration status: 204
+2026-09-23T09:48:15.284+07:00  INFO 15828 --- [inventory-service] [           main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-09-23T09:48:15.346+07:00  INFO 15828 --- [inventory-service] [           main] o.a.kafka.common.config.AbstractConfig   : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-saga-audit-group-1
+	client.rack = 
+	config.providers = []
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = saga-audit-group
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metadata.recovery.rebootstrap.trigger.ms = 300000
+	metadata.recovery.strategy = rebootstrap
+	metric.reporters = [org.apache.kafka.common.metrics.JmxReporter]
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.assertion.algorithm = RS256
+	sasl.oauthbearer.assertion.claim.aud = null
+	sasl.oauthbearer.assertion.claim.exp.seconds = 300
+	sasl.oauthbearer.assertion.claim.iss = null
+	sasl.oauthbearer.assertion.claim.jti.include = false
+	sasl.oauthbearer.assertion.claim.nbf.seconds = 60
+	sasl.oauthbearer.assertion.claim.sub = null
+	sasl.oauthbearer.assertion.file = null
+	sasl.oauthbearer.assertion.private.key.file = null
+	sasl.oauthbearer.assertion.private.key.passphrase = null
+	sasl.oauthbearer.assertion.template.file = null
+	sasl.oauthbearer.client.credentials.client.id = null
+	sasl.oauthbearer.client.credentials.client.secret = null
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = []
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.header.urlencode = false
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.jwt.retriever.class = class org.apache.kafka.common.security.oauthbearer.DefaultJwtRetriever
+	sasl.oauthbearer.jwt.validator.class = class org.apache.kafka.common.security.oauthbearer.DefaultJwtValidator
+	sasl.oauthbearer.scope = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	share.acknowledgement.mode = implicit
+	share.acquire.mode = BATCH_OPTIMIZED
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = []
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.springframework.kafka.support.serializer.JacksonJsonDeserializer
+
+2026-09-23T09:48:15.399+07:00  INFO 15828 --- [inventory-service] [           main] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2026-09-23T09:48:15.558+07:00  INFO 15828 --- [inventory-service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 4.2.1
+2026-09-23T09:48:15.558+07:00  INFO 15828 --- [inventory-service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 92f61c44867f39dc
+2026-09-23T09:48:15.558+07:00  INFO 15828 --- [inventory-service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1790131695556
+2026-09-23T09:48:15.563+07:00  INFO 15828 --- [inventory-service] [           main] o.a.k.c.c.i.ClassicKafkaConsumer         : [Consumer clientId=consumer-saga-audit-group-1, groupId=saga-audit-group] Subscribed to topic(s): order-events, payment-events, inventory-events
+2026-09-23T09:48:15.570+07:00  INFO 15828 --- [inventory-service] [           main] o.a.kafka.common.config.AbstractConfig   : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-inventory-service-group-2
+	client.rack = 
+	config.providers = []
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = inventory-service-group
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metadata.recovery.rebootstrap.trigger.ms = 300000
+	metadata.recovery.strategy = rebootstrap
+	metric.reporters = [org.apache.kafka.common.metrics.JmxReporter]
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.assertion.algorithm = RS256
+	sasl.oauthbearer.assertion.claim.aud = null
+	sasl.oauthbearer.assertion.claim.exp.seconds = 300
+	sasl.oauthbearer.assertion.claim.iss = null
+	sasl.oauthbearer.assertion.claim.jti.include = false
+	sasl.oauthbearer.assertion.claim.nbf.seconds = 60
+	sasl.oauthbearer.assertion.claim.sub = null
+	sasl.oauthbearer.assertion.file = null
+	sasl.oauthbearer.assertion.private.key.file = null
+	sasl.oauthbearer.assertion.private.key.passphrase = null
+	sasl.oauthbearer.assertion.template.file = null
+	sasl.oauthbearer.client.credentials.client.id = null
+	sasl.oauthbearer.client.credentials.client.secret = null
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = []
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.header.urlencode = false
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.jwt.retriever.class = class org.apache.kafka.common.security.oauthbearer.DefaultJwtRetriever
+	sasl.oauthbearer.jwt.validator.class = class org.apache.kafka.common.security.oauthbearer.DefaultJwtValidator
+	sasl.oauthbearer.scope = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	share.acknowledgement.mode = implicit
+	share.acquire.mode = BATCH_OPTIMIZED
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = []
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.springframework.kafka.support.serializer.JacksonJsonDeserializer
+
+2026-09-23T09:48:15.570+07:00  INFO 15828 --- [inventory-service] [           main] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2026-09-23T09:48:15.581+07:00  INFO 15828 --- [inventory-service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 4.2.1
+2026-09-23T09:48:15.581+07:00  INFO 15828 --- [inventory-service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 92f61c44867f39dc
+2026-09-23T09:48:15.581+07:00  INFO 15828 --- [inventory-service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1790131695581
+2026-09-23T09:48:15.582+07:00  INFO 15828 --- [inventory-service] [           main] o.a.k.c.c.i.ClassicKafkaConsumer         : [Consumer clientId=consumer-inventory-service-group-2, groupId=inventory-service-group] Subscribed to topic(s): payment-events
+2026-09-23T09:48:15.598+07:00  INFO 15828 --- [inventory-service] [           main] com.session14.saga.SagaDemoApplication   : Started SagaDemoApplication in 34.643 seconds (process running for 35.317)
+2026-09-23T09:48:16.185+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-inventory-service-group-2, groupId=inventory-service-group] Cluster ID: Mk3OEYBSD3Tsfw5LILxXkg
+2026-09-23T09:48:16.186+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-saga-audit-group-1, groupId=saga-audit-group] Cluster ID: Mk3OEYBSD3Tsfw5LILxXkg
+2026-09-23T09:48:16.191+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-saga-audit-group-1, groupId=saga-audit-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null isFenced: false)
+2026-09-23T09:48:16.191+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-inventory-service-group-2, groupId=inventory-service-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null isFenced: false)
+2026-09-23T09:48:16.194+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-inventory-service-group-2, groupId=inventory-service-group] (Re-)joining group
+2026-09-23T09:48:16.194+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-saga-audit-group-1, groupId=saga-audit-group] (Re-)joining group
+2026-09-23T09:48:16.226+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-saga-audit-group-1, groupId=saga-audit-group] Request joining group due to: need to re-join with the given member-id: consumer-saga-audit-group-1-c6e6cd0f-748b-4563-885f-8d0fbf97da5c
+2026-09-23T09:48:16.226+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-inventory-service-group-2, groupId=inventory-service-group] Request joining group due to: need to re-join with the given member-id: consumer-inventory-service-group-2-2fc1157b-a428-4753-b2e9-ff8d91098694
+2026-09-23T09:48:16.227+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-inventory-service-group-2, groupId=inventory-service-group] (Re-)joining group
+2026-09-23T09:48:16.227+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-saga-audit-group-1, groupId=saga-audit-group] (Re-)joining group
+2026-09-23T09:48:16.231+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-inventory-service-group-2, groupId=inventory-service-group] Successfully joined group with generation Generation{generationId=15, memberId='consumer-inventory-service-group-2-2fc1157b-a428-4753-b2e9-ff8d91098694', protocol='range'}
+2026-09-23T09:48:16.237+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-inventory-service-group-2, groupId=inventory-service-group] Finished assignment for group at generation 15: {consumer-inventory-service-group-2-2fc1157b-a428-4753-b2e9-ff8d91098694=Assignment(partitions=[payment-events-0])}
+2026-09-23T09:48:16.244+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-inventory-service-group-2, groupId=inventory-service-group] Successfully synced group in generation Generation{generationId=15, memberId='consumer-inventory-service-group-2-2fc1157b-a428-4753-b2e9-ff8d91098694', protocol='range'}
+2026-09-23T09:48:16.244+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-inventory-service-group-2, groupId=inventory-service-group] Notifying assignor about the new Assignment(partitions=[payment-events-0])
+2026-09-23T09:48:16.247+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-inventory-service-group-2, groupId=inventory-service-group] Adding newly assigned partitions: [payment-events-0]
+2026-09-23T09:48:16.257+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerUtils        : Setting offset for partition payment-events-0 to the committed offset FetchPosition{offset=19, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+2026-09-23T09:48:16.262+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : inventory-service-group: partitions assigned: [payment-events-0]
+2026-09-23T09:48:16.271+07:00 DEBUG 15828 --- [inventory-service] [           main] org.hibernate.SQL                        : select count(*) from saga_inventory i1_0
+2026-09-23T09:48:16.344+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-saga-audit-group-1, groupId=saga-audit-group] Successfully joined group with generation Generation{generationId=25, memberId='consumer-saga-audit-group-1-c6e6cd0f-748b-4563-885f-8d0fbf97da5c', protocol='range'}
+2026-09-23T09:48:16.349+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-saga-audit-group-1, groupId=saga-audit-group] Successfully synced group in generation Generation{generationId=25, memberId='consumer-saga-audit-group-1-c6e6cd0f-748b-4563-885f-8d0fbf97da5c', protocol='range'}
+2026-09-23T09:48:16.350+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-saga-audit-group-1, groupId=saga-audit-group] Notifying assignor about the new Assignment(partitions=[inventory-events-0, order-events-0, payment-events-0])
+2026-09-23T09:48:16.350+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-saga-audit-group-1, groupId=saga-audit-group] Adding newly assigned partitions: [inventory-events-0, order-events-0, payment-events-0]
+2026-09-23T09:48:16.354+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerUtils        : Setting offset for partition inventory-events-0 to the committed offset FetchPosition{offset=9, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+2026-09-23T09:48:16.354+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerUtils        : Setting offset for partition order-events-0 to the committed offset FetchPosition{offset=16, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+2026-09-23T09:48:16.354+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerUtils        : Setting offset for partition payment-events-0 to the committed offset FetchPosition{offset=19, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+2026-09-23T09:48:16.355+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : saga-audit-group: partitions assigned: [inventory-events-0, order-events-0, payment-events-0]
+2026-09-23T09:49:00.366+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] c.s.saga.common.SagaAuditListener        : [AUDIT] topic-event=OrderCreated correlationId=1790131563935 orderId=1790131563935
+2026-09-23T09:49:01.036+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] c.s.saga.common.SagaAuditListener        : [AUDIT] topic-event=PaymentCompleted correlationId=1790131563935 orderId=1790131563935
+2026-09-23T09:49:01.038+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] c.s.saga.inventory.InventoryService      : Inventory event received: type=PaymentCompleted eventId=f5de7245-928b-4f15-aa52-05df576e3422 correlationId=1790131563935 orderId=1790131563935 productId=1 quantity=1
+2026-09-23T09:49:01.050+07:00 DEBUG 15828 --- [inventory-service] [ntainer#1-0-C-1] org.hibernate.SQL                        : select i1_0.product_id,i1_0.available_quantity,i1_0.name from saga_inventory i1_0 where i1_0.product_id=?
+2026-09-23T09:49:01.052+07:00 TRACE 15828 --- [inventory-service] [ntainer#1-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [1]
+2026-09-23T09:49:01.074+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] c.session14.saga.common.EventPublisher   : Saga event publish started: topic=inventory-events type=InventoryDeducted eventId=a195476c-5fa9-4111-95a4-20f902d786ab correlationId=1790131563935 orderId=1790131563935 productId=1
+2026-09-23T09:49:01.082+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] o.a.kafka.common.config.AbstractConfig   : ProducerConfig values: 
+	acks = -1
+	batch.size = 16384
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.dns.lookup = use_all_dns_ips
+	client.id = inventory-service-producer-1
+	compression.gzip.level = -1
+	compression.lz4.level = 9
+	compression.type = none
+	compression.zstd.level = 3
+	config.providers = []
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = true
+	enable.metrics.push = true
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 5
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metadata.recovery.rebootstrap.trigger.ms = 300000
+	metadata.recovery.strategy = rebootstrap
+	metric.reporters = [org.apache.kafka.common.metrics.JmxReporter]
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.adaptive.partitioning.enable = true
+	partitioner.availability.timeout.ms = 0
+	partitioner.class = null
+	partitioner.ignore.keys = false
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.assertion.algorithm = RS256
+	sasl.oauthbearer.assertion.claim.aud = null
+	sasl.oauthbearer.assertion.claim.exp.seconds = 300
+	sasl.oauthbearer.assertion.claim.iss = null
+	sasl.oauthbearer.assertion.claim.jti.include = false
+	sasl.oauthbearer.assertion.claim.nbf.seconds = 60
+	sasl.oauthbearer.assertion.claim.sub = null
+	sasl.oauthbearer.assertion.file = null
+	sasl.oauthbearer.assertion.private.key.file = null
+	sasl.oauthbearer.assertion.private.key.passphrase = null
+	sasl.oauthbearer.assertion.template.file = null
+	sasl.oauthbearer.client.credentials.client.id = null
+	sasl.oauthbearer.client.credentials.client.secret = null
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = []
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.header.urlencode = false
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.jwt.retriever.class = class org.apache.kafka.common.security.oauthbearer.DefaultJwtRetriever
+	sasl.oauthbearer.jwt.validator.class = class org.apache.kafka.common.security.oauthbearer.DefaultJwtValidator
+	sasl.oauthbearer.scope = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = []
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transaction.two.phase.commit.enable = false
+	transactional.id = null
+	value.serializer = class org.springframework.kafka.support.serializer.JacksonJsonSerializer
+
+2026-09-23T09:49:01.083+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2026-09-23T09:49:01.097+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] o.a.k.clients.producer.KafkaProducer     : [Producer clientId=inventory-service-producer-1] Instantiated an idempotent producer.
+2026-09-23T09:49:01.116+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 4.2.1
+2026-09-23T09:49:01.116+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 92f61c44867f39dc
+2026-09-23T09:49:01.116+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1790131741116
+2026-09-23T09:49:01.127+07:00  INFO 15828 --- [inventory-service] [vice-producer-1] org.apache.kafka.clients.Metadata        : [Producer clientId=inventory-service-producer-1] Cluster ID: Mk3OEYBSD3Tsfw5LILxXkg
+2026-09-23T09:49:01.127+07:00  INFO 15828 --- [inventory-service] [vice-producer-1] o.a.k.c.p.internals.TransactionManager   : [Producer clientId=inventory-service-producer-1] ProducerId set to 3006 with epoch 0
+2026-09-23T09:49:01.167+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] c.s.saga.inventory.InventoryService      : InventoryService: InventoryDeducted orderId=1790131563935 remaining=13
+2026-09-23T09:49:01.184+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] c.s.saga.common.SagaAuditListener        : [AUDIT] topic-event=InventoryDeducted correlationId=1790131563935 orderId=1790131563935
+2026-09-23T09:49:01.190+07:00  INFO 15828 --- [inventory-service] [vice-producer-1] c.session14.saga.common.EventPublisher   : Saga event publish completed: topic=inventory-events partition=0 offset=9 type=InventoryDeducted eventId=a195476c-5fa9-4111-95a4-20f902d786ab correlationId=1790131563935
+2026-09-23T09:49:01.197+07:00 DEBUG 15828 --- [inventory-service] [ntainer#1-0-C-1] org.hibernate.SQL                        : update saga_inventory set available_quantity=?,name=? where product_id=?
+2026-09-23T09:49:01.201+07:00 TRACE 15828 --- [inventory-service] [ntainer#1-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (1:INTEGER) <- [13]
+2026-09-23T09:49:01.201+07:00 TRACE 15828 --- [inventory-service] [ntainer#1-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [Laptop Dell XPS 15]
+2026-09-23T09:49:01.201+07:00 TRACE 15828 --- [inventory-service] [ntainer#1-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (3:BIGINT) <- [1]
+2026-09-23T09:49:50.026+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] c.s.saga.common.SagaAuditListener        : [AUDIT] topic-event=OrderCreated correlationId=1790131563936 orderId=1790131563936
+2026-09-23T09:50:14.588+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] c.s.saga.common.SagaAuditListener        : [AUDIT] topic-event=OrderCreated correlationId=1790131563937 orderId=1790131563937
+2026-09-23T09:50:19.487+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-saga-audit-group-1, groupId=saga-audit-group] Request joining group due to: group is already rebalancing
+2026-09-23T09:50:19.489+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-saga-audit-group-1, groupId=saga-audit-group] Revoke previously assigned partitions [inventory-events-0, order-events-0, payment-events-0]
+2026-09-23T09:50:19.491+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : saga-audit-group: partitions revoked: [inventory-events-0, order-events-0, payment-events-0]
+2026-09-23T09:50:19.496+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-saga-audit-group-1, groupId=saga-audit-group] (Re-)joining group
+2026-09-23T09:50:19.511+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-saga-audit-group-1, groupId=saga-audit-group] Successfully joined group with generation Generation{generationId=26, memberId='consumer-saga-audit-group-1-c6e6cd0f-748b-4563-885f-8d0fbf97da5c', protocol='range'}
+2026-09-23T09:50:19.517+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-saga-audit-group-1, groupId=saga-audit-group] Successfully synced group in generation Generation{generationId=26, memberId='consumer-saga-audit-group-1-c6e6cd0f-748b-4563-885f-8d0fbf97da5c', protocol='range'}
+2026-09-23T09:50:19.518+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-saga-audit-group-1, groupId=saga-audit-group] Notifying assignor about the new Assignment(partitions=[inventory-events-0, order-events-0, payment-events-0])
+2026-09-23T09:50:19.518+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-saga-audit-group-1, groupId=saga-audit-group] Adding newly assigned partitions: [inventory-events-0, order-events-0, payment-events-0]
+2026-09-23T09:50:19.523+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerUtils        : Setting offset for partition inventory-events-0 to the committed offset FetchPosition{offset=10, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+2026-09-23T09:50:19.523+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerUtils        : Setting offset for partition order-events-0 to the committed offset FetchPosition{offset=19, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+2026-09-23T09:50:19.523+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerUtils        : Setting offset for partition payment-events-0 to the committed offset FetchPosition{offset=20, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+2026-09-23T09:50:19.523+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : saga-audit-group: partitions assigned: [inventory-events-0, order-events-0, payment-events-0]
+2026-09-23T09:51:30.528+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] c.s.saga.inventory.InventoryService      : Inventory event received: type=PaymentCompleted eventId=dfe6d9fb-2564-487c-afa5-458a17edf143 correlationId=1790131563936 orderId=1790131563936 productId=2 quantity=1
+2026-09-23T09:51:30.529+07:00 DEBUG 15828 --- [inventory-service] [ntainer#1-0-C-1] org.hibernate.SQL                        : select i1_0.product_id,i1_0.available_quantity,i1_0.name from saga_inventory i1_0 where i1_0.product_id=?
+2026-09-23T09:51:30.529+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] c.s.saga.common.SagaAuditListener        : [AUDIT] topic-event=PaymentCompleted correlationId=1790131563936 orderId=1790131563936
+2026-09-23T09:51:30.529+07:00 TRACE 15828 --- [inventory-service] [ntainer#1-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [2]
+2026-09-23T09:51:30.532+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] c.session14.saga.common.EventPublisher   : Saga event publish started: topic=inventory-events type=InventoryDeducted eventId=24618bb9-6bfd-4e96-b53c-f6672f1ee354 correlationId=1790131563936 orderId=1790131563936 productId=2
+2026-09-23T09:51:30.536+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] c.s.saga.inventory.InventoryService      : InventoryService: InventoryDeducted orderId=1790131563936 remaining=29
+2026-09-23T09:51:30.539+07:00 DEBUG 15828 --- [inventory-service] [ntainer#1-0-C-1] org.hibernate.SQL                        : update saga_inventory set available_quantity=?,name=? where product_id=?
+2026-09-23T09:51:30.541+07:00 TRACE 15828 --- [inventory-service] [ntainer#1-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (1:INTEGER) <- [29]
+2026-09-23T09:51:30.547+07:00 TRACE 15828 --- [inventory-service] [ntainer#1-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [iPhone 16 Pro Max 256GB]
+2026-09-23T09:51:30.548+07:00  INFO 15828 --- [inventory-service] [vice-producer-1] c.session14.saga.common.EventPublisher   : Saga event publish completed: topic=inventory-events partition=0 offset=10 type=InventoryDeducted eventId=24618bb9-6bfd-4e96-b53c-f6672f1ee354 correlationId=1790131563936
+2026-09-23T09:51:30.557+07:00 TRACE 15828 --- [inventory-service] [ntainer#1-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (3:BIGINT) <- [2]
+2026-09-23T09:51:30.563+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] c.s.saga.common.SagaAuditListener        : [AUDIT] topic-event=InventoryDeducted correlationId=1790131563936 orderId=1790131563936
+2026-09-23T09:51:30.591+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] c.s.saga.inventory.InventoryService      : Inventory event received: type=PaymentCompleted eventId=4c881a63-e809-4e7c-ad6a-429fddb9fc32 correlationId=1790131563937 orderId=1790131563937 productId=4 quantity=1
+2026-09-23T09:51:30.604+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] c.s.saga.common.SagaAuditListener        : [AUDIT] topic-event=PaymentCompleted correlationId=1790131563937 orderId=1790131563937
+2026-09-23T09:51:30.611+07:00 DEBUG 15828 --- [inventory-service] [ntainer#1-0-C-1] org.hibernate.SQL                        : select i1_0.product_id,i1_0.available_quantity,i1_0.name from saga_inventory i1_0 where i1_0.product_id=?
+2026-09-23T09:51:30.612+07:00 TRACE 15828 --- [inventory-service] [ntainer#1-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [4]
+2026-09-23T09:51:30.623+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] c.session14.saga.common.EventPublisher   : Saga event publish started: topic=inventory-events type=InventoryFailed eventId=793b287b-1dfb-4e6f-ae2e-ae3c948102cb correlationId=1790131563937 orderId=1790131563937 productId=4
+2026-09-23T09:51:30.624+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] c.s.saga.inventory.InventoryService      : InventoryService: InventoryFailed orderId=1790131563937 reason=Out of stock: only 0 left
+2026-09-23T09:51:30.649+07:00  INFO 15828 --- [inventory-service] [vice-producer-1] c.session14.saga.common.EventPublisher   : Saga event publish completed: topic=inventory-events partition=0 offset=11 type=InventoryFailed eventId=793b287b-1dfb-4e6f-ae2e-ae3c948102cb correlationId=1790131563937
+2026-09-23T09:51:30.661+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] c.s.saga.common.SagaAuditListener        : [AUDIT] topic-event=InventoryFailed correlationId=1790131563937 orderId=1790131563937
+2026-09-23T09:51:30.722+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] c.s.saga.inventory.InventoryService      : Inventory event received: type=PaymentRefunded eventId=eed6ab51-cd3f-4686-a86a-8896ac26f83b correlationId=1790131563937 orderId=1790131563937 productId=4 quantity=1
+2026-09-23T09:51:30.723+07:00 DEBUG 15828 --- [inventory-service] [ntainer#1-0-C-1] c.s.saga.inventory.InventoryService      : Inventory event ignored: type=PaymentRefunded correlationId=1790131563937
+2026-09-23T09:51:30.728+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] c.s.saga.common.SagaAuditListener        : [AUDIT] topic-event=PaymentRefunded correlationId=1790131563937 orderId=1790131563937
+2026-09-23T09:51:31.842+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-saga-audit-group-1, groupId=saga-audit-group] Request joining group due to: group is already rebalancing
+2026-09-23T09:51:31.843+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-saga-audit-group-1, groupId=saga-audit-group] Revoke previously assigned partitions [inventory-events-0, order-events-0, payment-events-0]
+2026-09-23T09:51:31.843+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : saga-audit-group: partitions revoked: [inventory-events-0, order-events-0, payment-events-0]
+2026-09-23T09:51:31.844+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-saga-audit-group-1, groupId=saga-audit-group] (Re-)joining group
+2026-09-23T09:51:31.857+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-saga-audit-group-1, groupId=saga-audit-group] Successfully joined group with generation Generation{generationId=27, memberId='consumer-saga-audit-group-1-c6e6cd0f-748b-4563-885f-8d0fbf97da5c', protocol='range'}
+2026-09-23T09:51:31.866+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-saga-audit-group-1, groupId=saga-audit-group] Successfully synced group in generation Generation{generationId=27, memberId='consumer-saga-audit-group-1-c6e6cd0f-748b-4563-885f-8d0fbf97da5c', protocol='range'}
+2026-09-23T09:51:31.866+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-saga-audit-group-1, groupId=saga-audit-group] Notifying assignor about the new Assignment(partitions=[inventory-events-0, order-events-0, payment-events-0])
+2026-09-23T09:51:31.867+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-saga-audit-group-1, groupId=saga-audit-group] Adding newly assigned partitions: [inventory-events-0, order-events-0, payment-events-0]
+2026-09-23T09:51:31.871+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerUtils        : Setting offset for partition inventory-events-0 to the committed offset FetchPosition{offset=12, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+2026-09-23T09:51:31.871+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerUtils        : Setting offset for partition order-events-0 to the committed offset FetchPosition{offset=19, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+2026-09-23T09:51:31.871+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerUtils        : Setting offset for partition payment-events-0 to the committed offset FetchPosition{offset=23, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+2026-09-23T09:51:31.872+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : saga-audit-group: partitions assigned: [inventory-events-0, order-events-0, payment-events-0]
+2026-09-23T09:51:53.171+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] c.s.saga.common.SagaAuditListener        : [AUDIT] topic-event=OrderCreated correlationId=1790131563938 orderId=1790131563938
+2026-09-23T09:51:53.196+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] c.s.saga.inventory.InventoryService      : Inventory event received: type=PaymentCompleted eventId=3886a92a-1506-470d-b2c7-119cf4e48cb3 correlationId=1790131563938 orderId=1790131563938 productId=4 quantity=1
+2026-09-23T09:51:53.199+07:00 DEBUG 15828 --- [inventory-service] [ntainer#1-0-C-1] org.hibernate.SQL                        : select i1_0.product_id,i1_0.available_quantity,i1_0.name from saga_inventory i1_0 where i1_0.product_id=?
+2026-09-23T09:51:53.201+07:00 TRACE 15828 --- [inventory-service] [ntainer#1-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [4]
+2026-09-23T09:51:53.201+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] c.s.saga.common.SagaAuditListener        : [AUDIT] topic-event=PaymentCompleted correlationId=1790131563938 orderId=1790131563938
+2026-09-23T09:51:53.203+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] c.session14.saga.common.EventPublisher   : Saga event publish started: topic=inventory-events type=InventoryFailed eventId=03522e56-e5dc-43ae-bee5-9f6c7156a8eb correlationId=1790131563938 orderId=1790131563938 productId=4
+2026-09-23T09:51:53.203+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] c.s.saga.inventory.InventoryService      : InventoryService: InventoryFailed orderId=1790131563938 reason=Out of stock: only 0 left
+2026-09-23T09:51:53.225+07:00  INFO 15828 --- [inventory-service] [vice-producer-1] c.session14.saga.common.EventPublisher   : Saga event publish completed: topic=inventory-events partition=0 offset=12 type=InventoryFailed eventId=03522e56-e5dc-43ae-bee5-9f6c7156a8eb correlationId=1790131563938
+2026-09-23T09:51:53.231+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] c.s.saga.common.SagaAuditListener        : [AUDIT] topic-event=InventoryFailed correlationId=1790131563938 orderId=1790131563938
+2026-09-23T09:51:53.259+07:00  INFO 15828 --- [inventory-service] [ntainer#1-0-C-1] c.s.saga.inventory.InventoryService      : Inventory event received: type=PaymentRefunded eventId=7b20def9-8a19-4af7-9695-60fe54832d9e correlationId=1790131563938 orderId=1790131563938 productId=4 quantity=1
+2026-09-23T09:51:53.259+07:00 DEBUG 15828 --- [inventory-service] [ntainer#1-0-C-1] c.s.saga.inventory.InventoryService      : Inventory event ignored: type=PaymentRefunded correlationId=1790131563938
+2026-09-23T09:51:53.265+07:00  INFO 15828 --- [inventory-service] [ntainer#0-0-C-1] c.s.saga.common.SagaAuditListener        : [AUDIT] topic-event=PaymentRefunded correlationId=1790131563938 orderId=1790131563938

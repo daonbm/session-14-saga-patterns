@@ -1,0 +1,108 @@
+{
+  "info": {
+    "_postman_id": "b6a7d7fb-4c54-4f01-9d75-saga-choreography",
+    "name": "saga-choreography",
+    "description": "Four requests for the Kafka choreography Saga demo.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "gatewayUrl",
+      "value": "http://localhost:8090"
+    },
+    {
+      "key": "orderId",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "1 - Check inventory",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{gatewayUrl}}/inventory-service/api/inventory",
+          "host": ["{{gatewayUrl}}"],
+          "path": ["inventory-service", "api", "inventory"]
+        }
+      }
+    },
+    {
+      "name": "2 - Successful order",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const body = pm.response.json();",
+              "pm.collectionVariables.set('orderId', body.orderId);",
+              "pm.test('Order accepted', function () { pm.expect(pm.response.code).to.eql(201); });"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"productId\": 1,\n  \"quantity\": 1,\n  \"amount\": 99.99,\n  \"customerId\": \"CUST-HAPPY\"\n}"
+        },
+        "url": {
+          "raw": "{{gatewayUrl}}/api/orders",
+          "host": ["{{gatewayUrl}}"],
+          "path": ["api", "orders"]
+        }
+      }
+    },
+    {
+      "name": "3 - Payment failure (stop payment-service first)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"productId\": 2,\n  \"quantity\": 1,\n  \"amount\": 120.00,\n  \"customerId\": \"CUST-PAYMENT-DOWN\"\n}"
+        },
+        "url": {
+          "raw": "{{gatewayUrl}}/api/orders",
+          "host": ["{{gatewayUrl}}"],
+          "path": ["api", "orders"]
+        }
+      }
+    },
+    {
+      "name": "4 - Inventory failure and refund (product 4 is out of stock)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"productId\": 4,\n  \"quantity\": 1,\n  \"amount\": 80.00,\n  \"customerId\": \"CUST-INVENTORY-FAIL\"\n}"
+        },
+        "url": {
+          "raw": "{{gatewayUrl}}/api/orders",
+          "host": ["{{gatewayUrl}}"],
+          "path": ["api", "orders"]
+        }
+      }
+    }
+  ]
+}

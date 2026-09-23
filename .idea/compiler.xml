@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.46/a5cfe99fdf320e84955ef653f2ce1bf789d11385/lombok-1.18.46.jar" />
+        </processorPath>
+        <module name="inventory-service.main" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="category-service" target="17" />
+      <module name="category-service.main" target="17" />
+      <module name="category-service.test" target="17" />
+      <module name="product-service" target="17" />
+      <module name="product-service.main" target="17" />
+      <module name="product-service.test" target="17" />
+      <module name="saga-patterns-demo" target="17" />
+      <module name="saga-patterns-demo.main" target="17" />
+      <module name="saga-patterns-demo.test" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="category-service" options="-parameters" />
+      <module name="category-service.main" options="-parameters" />
+      <module name="category-service.test" options="-parameters" />
+      <module name="config-server" options="-parameters" />
+      <module name="config-server.main" options="-parameters" />
+      <module name="config-server.test" options="-parameters" />
+      <module name="discovery-server" options="-parameters" />
+      <module name="discovery-server.main" options="-parameters" />
+      <module name="discovery-server.test" options="-parameters" />
+      <module name="gateway-service" options="-parameters" />
+      <module name="gateway-service.main" options="-parameters" />
+      <module name="gateway-service.test" options="-parameters" />
+      <module name="inventory-service" options="-parameters" />
+      <module name="inventory-service.main" options="-parameters" />
+      <module name="inventory-service.test" options="-parameters" />
+      <module name="order-service" options="-parameters" />
+      <module name="order-service.main" options="-parameters" />
+      <module name="order-service.test" options="-parameters" />
+      <module name="payment-service" options="-parameters" />
+      <module name="payment-service.main" options="-parameters" />
+      <module name="payment-service.test" options="-parameters" />
+      <module name="product-service" options="-parameters" />
+      <module name="product-service.main" options="-parameters" />
+      <module name="product-service.test" options="-parameters" />
+      <module name="saga-patterns-demo" options="-parameters" />
+      <module name="saga-patterns-demo.main" options="-parameters" />
+      <module name="saga-patterns-demo.test" options="-parameters" />
+    </option>
+  </component>
+</project>

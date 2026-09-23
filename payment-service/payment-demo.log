@@ -1,0 +1,662 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-23T09:50:49.885+07:00  INFO 28148 --- [payment-service] [           main] com.session14.saga.SagaDemoApplication   : Starting SagaDemoApplication v0.0.1-SNAPSHOT using Java 17.0.18 with PID 28148 (D:\Work\Rikkei\Microservice\Demo\project\payment-service\build\libs\payment-service-0.0.1-SNAPSHOT.jar started by lephu in D:\Work\Rikkei\Microservice\Demo\project\payment-service)
+2026-09-23T09:50:49.893+07:00 DEBUG 28148 --- [payment-service] [           main] com.session14.saga.SagaDemoApplication   : Running with Spring Boot v4.1.1, Spring v7.0.9
+2026-09-23T09:50:49.897+07:00  INFO 28148 --- [payment-service] [           main] com.session14.saga.SagaDemoApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-09-23T09:50:50.033+07:00  INFO 28148 --- [payment-service] [           main] o.s.c.c.c.ConfigServerConfigDataLoader   : Fetching config from server at : http://localhost:8888
+2026-09-23T09:50:50.034+07:00  INFO 28148 --- [payment-service] [           main] o.s.c.c.c.ConfigServerConfigDataLoader   : Located environment: name=payment-service, profiles=[default], label=null, version=null, state=null
+2026-09-23T09:50:53.189+07:00  INFO 28148 --- [payment-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-23T09:50:53.606+07:00  INFO 28148 --- [payment-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 388 ms. Found 1 JPA repository interface.
+2026-09-23T09:50:55.206+07:00  INFO 28148 --- [payment-service] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=3534ae0b-469e-3dbe-8b22-530d0bb7254e
+2026-09-23T09:50:57.124+07:00  INFO 28148 --- [payment-service] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8083 (http)
+2026-09-23T09:50:57.165+07:00  INFO 28148 --- [payment-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-23T09:50:57.166+07:00  INFO 28148 --- [payment-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-09-23T09:50:57.274+07:00  INFO 28148 --- [payment-service] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 7229 ms
+2026-09-23T09:50:58.714+07:00  INFO 28148 --- [payment-service] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-23T09:50:59.276+07:00  INFO 28148 --- [payment-service] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-09-23T09:51:00.357+07:00  INFO 28148 --- [payment-service] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-23T09:51:00.431+07:00  INFO 28148 --- [payment-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-23T09:51:14.588+07:00  INFO 28148 --- [payment-service] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn1: url=jdbc:h2:file:./data/payment-db user=SA
+2026-09-23T09:51:14.593+07:00  INFO 28148 --- [payment-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-23T09:51:14.736+07:00  INFO 28148 --- [payment-service] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/payment-db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: PAYMENT-DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-23T09:51:17.937+07:00  INFO 28148 --- [payment-service] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-23T09:51:18.042+07:00  INFO 28148 --- [payment-service] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-23T09:51:18.602+07:00  INFO 28148 --- [payment-service] [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-09-23T09:51:22.436+07:00  INFO 28148 --- [payment-service] [           main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-09-23T09:51:24.839+07:00  INFO 28148 --- [payment-service] [           main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-09-23T09:51:24.882+07:00  INFO 28148 --- [payment-service] [           main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestClient.
+2026-09-23T09:51:24.976+07:00  WARN 28148 --- [payment-service] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-09-23T09:51:24.988+07:00  INFO 28148 --- [payment-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 3 endpoints beneath base path '/actuator'
+2026-09-23T09:51:25.203+07:00  INFO 28148 --- [payment-service] [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2026-09-23T09:51:25.268+07:00  INFO 28148 --- [payment-service] [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2026-09-23T09:51:25.278+07:00  INFO 28148 --- [payment-service] [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2026-09-23T09:51:25.300+07:00  INFO 28148 --- [payment-service] [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2026-09-23T09:51:25.301+07:00  INFO 28148 --- [payment-service] [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2026-09-23T09:51:25.301+07:00  INFO 28148 --- [payment-service] [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2026-09-23T09:51:25.301+07:00  INFO 28148 --- [payment-service] [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2026-09-23T09:51:25.301+07:00  INFO 28148 --- [payment-service] [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2026-09-23T09:51:25.302+07:00  INFO 28148 --- [payment-service] [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2026-09-23T09:51:25.302+07:00  INFO 28148 --- [payment-service] [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2026-09-23T09:51:26.175+07:00  INFO 28148 --- [payment-service] [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2026-09-23T09:51:26.178+07:00  INFO 28148 --- [payment-service] [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2026-09-23T09:51:26.181+07:00  INFO 28148 --- [payment-service] [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2026-09-23T09:51:26.184+07:00  INFO 28148 --- [payment-service] [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1790131886183 with initial instances count: 3
+2026-09-23T09:51:26.189+07:00  INFO 28148 --- [payment-service] [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application PAYMENT-SERVICE with eureka with status UP
+2026-09-23T09:51:26.190+07:00  INFO 28148 --- [payment-service] [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1790131886190, current=UP, previous=STARTING]
+2026-09-23T09:51:26.191+07:00  INFO 28148 --- [payment-service] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYMENT-SERVICE/localhost:payment-service:8083: registering service...
+2026-09-23T09:51:26.230+07:00  INFO 28148 --- [payment-service] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8083 (http) with context path '/'
+2026-09-23T09:51:26.232+07:00  INFO 28148 --- [payment-service] [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8083
+2026-09-23T09:51:26.264+07:00  INFO 28148 --- [payment-service] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYMENT-SERVICE/localhost:payment-service:8083 - registration status: 204
+2026-09-23T09:51:27.601+07:00  INFO 28148 --- [payment-service] [           main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-09-23T09:51:27.701+07:00  INFO 28148 --- [payment-service] [           main] o.a.kafka.common.config.AbstractConfig   : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-payment-service-group-1
+	client.rack = 
+	config.providers = []
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = payment-service-group
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metadata.recovery.rebootstrap.trigger.ms = 300000
+	metadata.recovery.strategy = rebootstrap
+	metric.reporters = [org.apache.kafka.common.metrics.JmxReporter]
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.assertion.algorithm = RS256
+	sasl.oauthbearer.assertion.claim.aud = null
+	sasl.oauthbearer.assertion.claim.exp.seconds = 300
+	sasl.oauthbearer.assertion.claim.iss = null
+	sasl.oauthbearer.assertion.claim.jti.include = false
+	sasl.oauthbearer.assertion.claim.nbf.seconds = 60
+	sasl.oauthbearer.assertion.claim.sub = null
+	sasl.oauthbearer.assertion.file = null
+	sasl.oauthbearer.assertion.private.key.file = null
+	sasl.oauthbearer.assertion.private.key.passphrase = null
+	sasl.oauthbearer.assertion.template.file = null
+	sasl.oauthbearer.client.credentials.client.id = null
+	sasl.oauthbearer.client.credentials.client.secret = null
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = []
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.header.urlencode = false
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.jwt.retriever.class = class org.apache.kafka.common.security.oauthbearer.DefaultJwtRetriever
+	sasl.oauthbearer.jwt.validator.class = class org.apache.kafka.common.security.oauthbearer.DefaultJwtValidator
+	sasl.oauthbearer.scope = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	share.acknowledgement.mode = implicit
+	share.acquire.mode = BATCH_OPTIMIZED
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = []
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.springframework.kafka.support.serializer.JacksonJsonDeserializer
+
+2026-09-23T09:51:27.801+07:00  INFO 28148 --- [payment-service] [           main] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2026-09-23T09:51:28.060+07:00  INFO 28148 --- [payment-service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 4.2.1
+2026-09-23T09:51:28.060+07:00  INFO 28148 --- [payment-service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 92f61c44867f39dc
+2026-09-23T09:51:28.060+07:00  INFO 28148 --- [payment-service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1790131888056
+2026-09-23T09:51:28.074+07:00  INFO 28148 --- [payment-service] [           main] o.a.k.c.c.i.ClassicKafkaConsumer         : [Consumer clientId=consumer-payment-service-group-1, groupId=payment-service-group] Subscribed to topic(s): order-events
+2026-09-23T09:51:28.087+07:00  INFO 28148 --- [payment-service] [           main] o.a.kafka.common.config.AbstractConfig   : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-saga-audit-group-2
+	client.rack = 
+	config.providers = []
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = saga-audit-group
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metadata.recovery.rebootstrap.trigger.ms = 300000
+	metadata.recovery.strategy = rebootstrap
+	metric.reporters = [org.apache.kafka.common.metrics.JmxReporter]
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.assertion.algorithm = RS256
+	sasl.oauthbearer.assertion.claim.aud = null
+	sasl.oauthbearer.assertion.claim.exp.seconds = 300
+	sasl.oauthbearer.assertion.claim.iss = null
+	sasl.oauthbearer.assertion.claim.jti.include = false
+	sasl.oauthbearer.assertion.claim.nbf.seconds = 60
+	sasl.oauthbearer.assertion.claim.sub = null
+	sasl.oauthbearer.assertion.file = null
+	sasl.oauthbearer.assertion.private.key.file = null
+	sasl.oauthbearer.assertion.private.key.passphrase = null
+	sasl.oauthbearer.assertion.template.file = null
+	sasl.oauthbearer.client.credentials.client.id = null
+	sasl.oauthbearer.client.credentials.client.secret = null
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = []
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.header.urlencode = false
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.jwt.retriever.class = class org.apache.kafka.common.security.oauthbearer.DefaultJwtRetriever
+	sasl.oauthbearer.jwt.validator.class = class org.apache.kafka.common.security.oauthbearer.DefaultJwtValidator
+	sasl.oauthbearer.scope = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	share.acknowledgement.mode = implicit
+	share.acquire.mode = BATCH_OPTIMIZED
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = []
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.springframework.kafka.support.serializer.JacksonJsonDeserializer
+
+2026-09-23T09:51:28.089+07:00  INFO 28148 --- [payment-service] [           main] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2026-09-23T09:51:28.115+07:00  INFO 28148 --- [payment-service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 4.2.1
+2026-09-23T09:51:28.115+07:00  INFO 28148 --- [payment-service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 92f61c44867f39dc
+2026-09-23T09:51:28.115+07:00  INFO 28148 --- [payment-service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1790131888115
+2026-09-23T09:51:28.116+07:00  INFO 28148 --- [payment-service] [           main] o.a.k.c.c.i.ClassicKafkaConsumer         : [Consumer clientId=consumer-saga-audit-group-2, groupId=saga-audit-group] Subscribed to topic(s): order-events, payment-events, inventory-events
+2026-09-23T09:51:28.122+07:00  INFO 28148 --- [payment-service] [           main] o.a.kafka.common.config.AbstractConfig   : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-payment-service-group-3
+	client.rack = 
+	config.providers = []
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = payment-service-group
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metadata.recovery.rebootstrap.trigger.ms = 300000
+	metadata.recovery.strategy = rebootstrap
+	metric.reporters = [org.apache.kafka.common.metrics.JmxReporter]
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.assertion.algorithm = RS256
+	sasl.oauthbearer.assertion.claim.aud = null
+	sasl.oauthbearer.assertion.claim.exp.seconds = 300
+	sasl.oauthbearer.assertion.claim.iss = null
+	sasl.oauthbearer.assertion.claim.jti.include = false
+	sasl.oauthbearer.assertion.claim.nbf.seconds = 60
+	sasl.oauthbearer.assertion.claim.sub = null
+	sasl.oauthbearer.assertion.file = null
+	sasl.oauthbearer.assertion.private.key.file = null
+	sasl.oauthbearer.assertion.private.key.passphrase = null
+	sasl.oauthbearer.assertion.template.file = null
+	sasl.oauthbearer.client.credentials.client.id = null
+	sasl.oauthbearer.client.credentials.client.secret = null
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = []
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.header.urlencode = false
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.jwt.retriever.class = class org.apache.kafka.common.security.oauthbearer.DefaultJwtRetriever
+	sasl.oauthbearer.jwt.validator.class = class org.apache.kafka.common.security.oauthbearer.DefaultJwtValidator
+	sasl.oauthbearer.scope = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	share.acknowledgement.mode = implicit
+	share.acquire.mode = BATCH_OPTIMIZED
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = []
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.springframework.kafka.support.serializer.JacksonJsonDeserializer
+
+2026-09-23T09:51:28.123+07:00  INFO 28148 --- [payment-service] [           main] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2026-09-23T09:51:28.144+07:00  INFO 28148 --- [payment-service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 4.2.1
+2026-09-23T09:51:28.144+07:00  INFO 28148 --- [payment-service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 92f61c44867f39dc
+2026-09-23T09:51:28.145+07:00  INFO 28148 --- [payment-service] [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1790131888144
+2026-09-23T09:51:28.146+07:00  INFO 28148 --- [payment-service] [           main] o.a.k.c.c.i.ClassicKafkaConsumer         : [Consumer clientId=consumer-payment-service-group-3, groupId=payment-service-group] Subscribed to topic(s): inventory-events
+2026-09-23T09:51:28.184+07:00  INFO 28148 --- [payment-service] [           main] com.session14.saga.SagaDemoApplication   : Started SagaDemoApplication in 40.858 seconds (process running for 41.566)
+2026-09-23T09:51:28.973+07:00  INFO 28148 --- [payment-service] [ntainer#2-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-payment-service-group-1, groupId=payment-service-group] Cluster ID: Mk3OEYBSD3Tsfw5LILxXkg
+2026-09-23T09:51:28.973+07:00  INFO 28148 --- [payment-service] [ntainer#1-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-payment-service-group-3, groupId=payment-service-group] Cluster ID: Mk3OEYBSD3Tsfw5LILxXkg
+2026-09-23T09:51:28.974+07:00  INFO 28148 --- [payment-service] [ntainer#0-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-saga-audit-group-2, groupId=saga-audit-group] Cluster ID: Mk3OEYBSD3Tsfw5LILxXkg
+2026-09-23T09:51:28.980+07:00  INFO 28148 --- [payment-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-saga-audit-group-2, groupId=saga-audit-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null isFenced: false)
+2026-09-23T09:51:28.980+07:00  INFO 28148 --- [payment-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payment-service-group-3, groupId=payment-service-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null isFenced: false)
+2026-09-23T09:51:28.985+07:00  INFO 28148 --- [payment-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-saga-audit-group-2, groupId=saga-audit-group] (Re-)joining group
+2026-09-23T09:51:28.983+07:00  INFO 28148 --- [payment-service] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payment-service-group-1, groupId=payment-service-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null isFenced: false)
+2026-09-23T09:51:28.988+07:00  INFO 28148 --- [payment-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payment-service-group-3, groupId=payment-service-group] (Re-)joining group
+2026-09-23T09:51:28.987+07:00  INFO 28148 --- [payment-service] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payment-service-group-1, groupId=payment-service-group] (Re-)joining group
+2026-09-23T09:51:29.044+07:00  INFO 28148 --- [payment-service] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payment-service-group-1, groupId=payment-service-group] Request joining group due to: need to re-join with the given member-id: consumer-payment-service-group-1-ec0d79ae-71d3-4501-9b92-aeaa0f36dae4
+2026-09-23T09:51:29.045+07:00  INFO 28148 --- [payment-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payment-service-group-3, groupId=payment-service-group] Request joining group due to: need to re-join with the given member-id: consumer-payment-service-group-3-82311385-4f2e-45bf-befd-3d481cef463d
+2026-09-23T09:51:29.045+07:00  INFO 28148 --- [payment-service] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payment-service-group-1, groupId=payment-service-group] (Re-)joining group
+2026-09-23T09:51:29.045+07:00  INFO 28148 --- [payment-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-saga-audit-group-2, groupId=saga-audit-group] Request joining group due to: need to re-join with the given member-id: consumer-saga-audit-group-2-f142f075-35bc-477e-a096-6992ee5e564b
+2026-09-23T09:51:29.045+07:00  INFO 28148 --- [payment-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payment-service-group-3, groupId=payment-service-group] (Re-)joining group
+2026-09-23T09:51:29.046+07:00  INFO 28148 --- [payment-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-saga-audit-group-2, groupId=saga-audit-group] (Re-)joining group
+2026-09-23T09:51:29.054+07:00  INFO 28148 --- [payment-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payment-service-group-3, groupId=payment-service-group] Successfully joined group with generation Generation{generationId=19, memberId='consumer-payment-service-group-3-82311385-4f2e-45bf-befd-3d481cef463d', protocol='range'}
+2026-09-23T09:51:29.054+07:00  INFO 28148 --- [payment-service] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payment-service-group-1, groupId=payment-service-group] Successfully joined group with generation Generation{generationId=19, memberId='consumer-payment-service-group-1-ec0d79ae-71d3-4501-9b92-aeaa0f36dae4', protocol='range'}
+2026-09-23T09:51:29.084+07:00  INFO 28148 --- [payment-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payment-service-group-3, groupId=payment-service-group] Finished assignment for group at generation 19: {consumer-payment-service-group-1-ec0d79ae-71d3-4501-9b92-aeaa0f36dae4=Assignment(partitions=[order-events-0]), consumer-payment-service-group-3-82311385-4f2e-45bf-befd-3d481cef463d=Assignment(partitions=[inventory-events-0])}
+2026-09-23T09:51:29.094+07:00  INFO 28148 --- [payment-service] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payment-service-group-1, groupId=payment-service-group] Successfully synced group in generation Generation{generationId=19, memberId='consumer-payment-service-group-1-ec0d79ae-71d3-4501-9b92-aeaa0f36dae4', protocol='range'}
+2026-09-23T09:51:29.094+07:00  INFO 28148 --- [payment-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payment-service-group-3, groupId=payment-service-group] Successfully synced group in generation Generation{generationId=19, memberId='consumer-payment-service-group-3-82311385-4f2e-45bf-befd-3d481cef463d', protocol='range'}
+2026-09-23T09:51:29.095+07:00  INFO 28148 --- [payment-service] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payment-service-group-1, groupId=payment-service-group] Notifying assignor about the new Assignment(partitions=[order-events-0])
+2026-09-23T09:51:29.095+07:00  INFO 28148 --- [payment-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payment-service-group-3, groupId=payment-service-group] Notifying assignor about the new Assignment(partitions=[inventory-events-0])
+2026-09-23T09:51:29.099+07:00  INFO 28148 --- [payment-service] [ntainer#1-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-payment-service-group-3, groupId=payment-service-group] Adding newly assigned partitions: [inventory-events-0]
+2026-09-23T09:51:29.099+07:00  INFO 28148 --- [payment-service] [ntainer#2-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-payment-service-group-1, groupId=payment-service-group] Adding newly assigned partitions: [order-events-0]
+2026-09-23T09:51:29.116+07:00  INFO 28148 --- [payment-service] [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerUtils        : Setting offset for partition inventory-events-0 to the committed offset FetchPosition{offset=10, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+2026-09-23T09:51:29.116+07:00  INFO 28148 --- [payment-service] [ntainer#2-0-C-1] o.a.k.c.c.internals.ConsumerUtils        : Setting offset for partition order-events-0 to the committed offset FetchPosition{offset=17, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null isFenced: false)], epoch=0}}
+2026-09-23T09:51:29.123+07:00  INFO 28148 --- [payment-service] [ntainer#2-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : payment-service-group: partitions assigned: [order-events-0]
+2026-09-23T09:51:29.123+07:00  INFO 28148 --- [payment-service] [ntainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : payment-service-group: partitions assigned: [inventory-events-0]
+2026-09-23T09:51:29.239+07:00  INFO 28148 --- [payment-service] [ntainer#2-0-C-1] c.session14.saga.payment.PaymentService  : Payment event received: type=OrderCreated eventId=c0fa7247-5e25-49a5-a80c-dd8714a94dcc correlationId=1790131563936 orderId=1790131563936 amount=120.00
+2026-09-23T09:51:30.172+07:00 DEBUG 28148 --- [payment-service] [ntainer#2-0-C-1] org.hibernate.SQL                        : select p1_0.id,p1_0.amount,p1_0.created_at,p1_0.customer_id,p1_0.order_id,p1_0.reason,p1_0.status from saga_payments p1_0 where p1_0.order_id=?
+2026-09-23T09:51:30.174+07:00 TRACE 28148 --- [payment-service] [ntainer#2-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [1790131563936]
+2026-09-23T09:51:30.296+07:00 DEBUG 28148 --- [payment-service] [ntainer#2-0-C-1] org.hibernate.SQL                        : insert into saga_payments (amount,created_at,customer_id,order_id,reason,status,id) values (?,?,?,?,?,?,default)
+2026-09-23T09:51:30.303+07:00 TRACE 28148 --- [payment-service] [ntainer#2-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (1:NUMERIC) <- [120.00]
+2026-09-23T09:51:30.305+07:00 TRACE 28148 --- [payment-service] [ntainer#2-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (2:TIMESTAMP_UTC) <- [2026-09-23T02:51:30.228653Z]
+2026-09-23T09:51:30.312+07:00 TRACE 28148 --- [payment-service] [ntainer#2-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [DEMO-PAYMENT-DOWN]
+2026-09-23T09:51:30.313+07:00 TRACE 28148 --- [payment-service] [ntainer#2-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (4:BIGINT) <- [1790131563936]
+2026-09-23T09:51:30.314+07:00 TRACE 28148 --- [payment-service] [ntainer#2-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [null]
+2026-09-23T09:51:30.314+07:00 TRACE 28148 --- [payment-service] [ntainer#2-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [COMPLETED]
+2026-09-23T09:51:30.341+07:00  INFO 28148 --- [payment-service] [ntainer#2-0-C-1] c.session14.saga.payment.PaymentService  : PaymentCompleted: orderId=1790131563936 correlationId=1790131563936
+2026-09-23T09:51:30.341+07:00  INFO 28148 --- [payment-service] [ntainer#2-0-C-1] c.session14.saga.common.EventPublisher   : Saga event publish started: topic=payment-events type=PaymentCompleted eventId=dfe6d9fb-2564-487c-afa5-458a17edf143 correlationId=1790131563936 orderId=1790131563936 productId=2
+2026-09-23T09:51:30.359+07:00  INFO 28148 --- [payment-service] [ntainer#2-0-C-1] o.a.kafka.common.config.AbstractConfig   : ProducerConfig values: 
+	acks = -1
+	batch.size = 16384
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.dns.lookup = use_all_dns_ips
+	client.id = payment-service-producer-1
+	compression.gzip.level = -1
+	compression.lz4.level = 9
+	compression.type = none
+	compression.zstd.level = 3
+	config.providers = []
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = true
+	enable.metrics.push = true
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 5
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metadata.recovery.rebootstrap.trigger.ms = 300000
+	metadata.recovery.strategy = rebootstrap
+	metric.reporters = [org.apache.kafka.common.metrics.JmxReporter]
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.adaptive.partitioning.enable = true
+	partitioner.availability.timeout.ms = 0
+	partitioner.class = null
+	partitioner.ignore.keys = false
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.assertion.algorithm = RS256
+	sasl.oauthbearer.assertion.claim.aud = null
+	sasl.oauthbearer.assertion.claim.exp.seconds = 300
+	sasl.oauthbearer.assertion.claim.iss = null
+	sasl.oauthbearer.assertion.claim.jti.include = false
+	sasl.oauthbearer.assertion.claim.nbf.seconds = 60
+	sasl.oauthbearer.assertion.claim.sub = null
+	sasl.oauthbearer.assertion.file = null
+	sasl.oauthbearer.assertion.private.key.file = null
+	sasl.oauthbearer.assertion.private.key.passphrase = null
+	sasl.oauthbearer.assertion.template.file = null
+	sasl.oauthbearer.client.credentials.client.id = null
+	sasl.oauthbearer.client.credentials.client.secret = null
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = []
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.header.urlencode = false
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.jwt.retriever.class = class org.apache.kafka.common.security.oauthbearer.DefaultJwtRetriever
+	sasl.oauthbearer.jwt.validator.class = class org.apache.kafka.common.security.oauthbearer.DefaultJwtValidator
+	sasl.oauthbearer.scope = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = []
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transaction.two.phase.commit.enable = false
+	transactional.id = null
+	value.serializer = class org.springframework.kafka.support.serializer.JacksonJsonSerializer
+
+2026-09-23T09:51:30.360+07:00  INFO 28148 --- [payment-service] [ntainer#2-0-C-1] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+2026-09-23T09:51:30.384+07:00  INFO 28148 --- [payment-service] [ntainer#2-0-C-1] o.a.k.clients.producer.KafkaProducer     : [Producer clientId=payment-service-producer-1] Instantiated an idempotent producer.
+2026-09-23T09:51:30.412+07:00  INFO 28148 --- [payment-service] [ntainer#2-0-C-1] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 4.2.1
+2026-09-23T09:51:30.412+07:00  INFO 28148 --- [payment-service] [ntainer#2-0-C-1] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 92f61c44867f39dc
+2026-09-23T09:51:30.412+07:00  INFO 28148 --- [payment-service] [ntainer#2-0-C-1] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1790131890412
+2026-09-23T09:51:30.429+07:00  INFO 28148 --- [payment-service] [vice-producer-1] org.apache.kafka.clients.Metadata        : [Producer clientId=payment-service-producer-1] Cluster ID: Mk3OEYBSD3Tsfw5LILxXkg
+2026-09-23T09:51:30.430+07:00  INFO 28148 --- [payment-service] [vice-producer-1] o.a.k.c.p.internals.TransactionManager   : [Producer clientId=payment-service-producer-1] ProducerId set to 3007 with epoch 0
+2026-09-23T09:51:30.520+07:00  INFO 28148 --- [payment-service] [ntainer#2-0-C-1] c.session14.saga.payment.PaymentService  : Payment event received: type=OrderCreated eventId=77563f84-e3af-414e-8f4d-084905301bf7 correlationId=1790131563937 orderId=1790131563937 amount=80.00
+2026-09-23T09:51:30.524+07:00 DEBUG 28148 --- [payment-service] [ntainer#2-0-C-1] org.hibernate.SQL                        : select p1_0.id,p1_0.amount,p1_0.created_at,p1_0.customer_id,p1_0.order_id,p1_0.reason,p1_0.status from saga_payments p1_0 where p1_0.order_id=?
+2026-09-23T09:51:30.524+07:00 TRACE 28148 --- [payment-service] [ntainer#2-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [1790131563937]
+2026-09-23T09:51:30.534+07:00 DEBUG 28148 --- [payment-service] [ntainer#2-0-C-1] org.hibernate.SQL                        : insert into saga_payments (amount,created_at,customer_id,order_id,reason,status,id) values (?,?,?,?,?,?,default)
+2026-09-23T09:51:30.537+07:00 TRACE 28148 --- [payment-service] [ntainer#2-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (1:NUMERIC) <- [80.00]
+2026-09-23T09:51:30.538+07:00 TRACE 28148 --- [payment-service] [ntainer#2-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (2:TIMESTAMP_UTC) <- [2026-09-23T02:51:30.532407500Z]
+2026-09-23T09:51:30.539+07:00 TRACE 28148 --- [payment-service] [ntainer#2-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [DEMO-INVENTORY-FAIL]
+2026-09-23T09:51:30.540+07:00 TRACE 28148 --- [payment-service] [ntainer#2-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (4:BIGINT) <- [1790131563937]
+2026-09-23T09:51:30.541+07:00 TRACE 28148 --- [payment-service] [ntainer#2-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [null]
+2026-09-23T09:51:30.541+07:00 TRACE 28148 --- [payment-service] [ntainer#2-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [COMPLETED]
+2026-09-23T09:51:30.541+07:00  INFO 28148 --- [payment-service] [vice-producer-1] c.session14.saga.common.EventPublisher   : Saga event publish completed: topic=payment-events partition=0 offset=20 type=PaymentCompleted eventId=dfe6d9fb-2564-487c-afa5-458a17edf143 correlationId=1790131563936
+2026-09-23T09:51:30.543+07:00  INFO 28148 --- [payment-service] [ntainer#2-0-C-1] c.session14.saga.payment.PaymentService  : PaymentCompleted: orderId=1790131563937 correlationId=1790131563937
+2026-09-23T09:51:30.543+07:00  INFO 28148 --- [payment-service] [ntainer#2-0-C-1] c.session14.saga.common.EventPublisher   : Saga event publish started: topic=payment-events type=PaymentCompleted eventId=4c881a63-e809-4e7c-ad6a-429fddb9fc32 correlationId=1790131563937 orderId=1790131563937 productId=4
+2026-09-23T09:51:30.569+07:00  INFO 28148 --- [payment-service] [vice-producer-1] c.session14.saga.common.EventPublisher   : Saga event publish completed: topic=payment-events partition=0 offset=21 type=PaymentCompleted eventId=4c881a63-e809-4e7c-ad6a-429fddb9fc32 correlationId=1790131563937
+2026-09-23T09:51:30.564+07:00 DEBUG 28148 --- [payment-service] [ntainer#1-0-C-1] c.session14.saga.payment.PaymentService  : Payment compensation event ignored: type=InventoryDeducted correlationId=1790131563936
+2026-09-23T09:51:30.675+07:00  WARN 28148 --- [payment-service] [ntainer#1-0-C-1] c.session14.saga.payment.PaymentService  : Payment compensation started: inventory failed orderId=1790131563937 reason=Out of stock: only 0 left
+2026-09-23T09:51:30.676+07:00 DEBUG 28148 --- [payment-service] [ntainer#1-0-C-1] org.hibernate.SQL                        : select p1_0.id,p1_0.amount,p1_0.created_at,p1_0.customer_id,p1_0.order_id,p1_0.reason,p1_0.status from saga_payments p1_0 where p1_0.order_id=?
+2026-09-23T09:51:30.676+07:00 TRACE 28148 --- [payment-service] [ntainer#1-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [1790131563937]
+2026-09-23T09:51:30.691+07:00  INFO 28148 --- [payment-service] [ntainer#1-0-C-1] c.session14.saga.payment.PaymentService  : REFUND completed: orderId=1790131563937 correlationId=1790131563937 reason=Out of stock: only 0 left
+2026-09-23T09:51:30.692+07:00  INFO 28148 --- [payment-service] [ntainer#1-0-C-1] c.session14.saga.common.EventPublisher   : Saga event publish started: topic=payment-events type=PaymentRefunded eventId=eed6ab51-cd3f-4686-a86a-8896ac26f83b correlationId=1790131563937 orderId=1790131563937 productId=4
+2026-09-23T09:51:30.706+07:00 DEBUG 28148 --- [payment-service] [ntainer#1-0-C-1] org.hibernate.SQL                        : update saga_payments set amount=?,created_at=?,customer_id=?,order_id=?,reason=?,status=? where id=?
+2026-09-23T09:51:30.711+07:00 TRACE 28148 --- [payment-service] [ntainer#1-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (1:NUMERIC) <- [80.00]
+2026-09-23T09:51:30.711+07:00 TRACE 28148 --- [payment-service] [ntainer#1-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (2:TIMESTAMP_UTC) <- [2026-09-23T02:51:30.532408Z]
+2026-09-23T09:51:30.712+07:00 TRACE 28148 --- [payment-service] [ntainer#1-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [DEMO-INVENTORY-FAIL]
+2026-09-23T09:51:30.712+07:00 TRACE 28148 --- [payment-service] [ntainer#1-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (4:BIGINT) <- [1790131563937]
+2026-09-23T09:51:30.712+07:00 TRACE 28148 --- [payment-service] [ntainer#1-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [Out of stock: only 0 left]
+2026-09-23T09:51:30.715+07:00 TRACE 28148 --- [payment-service] [ntainer#1-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [REFUNDED]
+2026-09-23T09:51:30.715+07:00 TRACE 28148 --- [payment-service] [ntainer#1-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (7:BIGINT) <- [98]
+2026-09-23T09:51:30.721+07:00  INFO 28148 --- [payment-service] [vice-producer-1] c.session14.saga.common.EventPublisher   : Saga event publish completed: topic=payment-events partition=0 offset=22 type=PaymentRefunded eventId=eed6ab51-cd3f-4686-a86a-8896ac26f83b correlationId=1790131563937
+2026-09-23T09:51:31.850+07:00  INFO 28148 --- [payment-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-saga-audit-group-2, groupId=saga-audit-group] Successfully joined group with generation Generation{generationId=27, memberId='consumer-saga-audit-group-2-f142f075-35bc-477e-a096-6992ee5e564b', protocol='range'}
+2026-09-23T09:51:31.864+07:00  INFO 28148 --- [payment-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-saga-audit-group-2, groupId=saga-audit-group] Successfully synced group in generation Generation{generationId=27, memberId='consumer-saga-audit-group-2-f142f075-35bc-477e-a096-6992ee5e564b', protocol='range'}
+2026-09-23T09:51:31.866+07:00  INFO 28148 --- [payment-service] [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-saga-audit-group-2, groupId=saga-audit-group] Notifying assignor about the new Assignment(partitions=[])
+2026-09-23T09:51:31.866+07:00  INFO 28148 --- [payment-service] [ntainer#0-0-C-1] k.c.c.i.ConsumerRebalanceListenerInvoker : [Consumer clientId=consumer-saga-audit-group-2, groupId=saga-audit-group] Adding newly assigned partitions: []
+2026-09-23T09:51:31.866+07:00  INFO 28148 --- [payment-service] [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : saga-audit-group: partitions assigned: []
+2026-09-23T09:51:53.171+07:00  INFO 28148 --- [payment-service] [ntainer#2-0-C-1] c.session14.saga.payment.PaymentService  : Payment event received: type=OrderCreated eventId=2eee9ae3-6c95-427a-bd45-dc5eb037e676 correlationId=1790131563938 orderId=1790131563938 amount=80.00
+2026-09-23T09:51:53.175+07:00 DEBUG 28148 --- [payment-service] [ntainer#2-0-C-1] org.hibernate.SQL                        : select p1_0.id,p1_0.amount,p1_0.created_at,p1_0.customer_id,p1_0.order_id,p1_0.reason,p1_0.status from saga_payments p1_0 where p1_0.order_id=?
+2026-09-23T09:51:53.176+07:00 TRACE 28148 --- [payment-service] [ntainer#2-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [1790131563938]
+2026-09-23T09:51:53.179+07:00 DEBUG 28148 --- [payment-service] [ntainer#2-0-C-1] org.hibernate.SQL                        : insert into saga_payments (amount,created_at,customer_id,order_id,reason,status,id) values (?,?,?,?,?,?,default)
+2026-09-23T09:51:53.179+07:00 TRACE 28148 --- [payment-service] [ntainer#2-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (1:NUMERIC) <- [80.00]
+2026-09-23T09:51:53.180+07:00 TRACE 28148 --- [payment-service] [ntainer#2-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (2:TIMESTAMP_UTC) <- [2026-09-23T02:51:53.178184900Z]
+2026-09-23T09:51:53.180+07:00 TRACE 28148 --- [payment-service] [ntainer#2-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [DEMO-INVENTORY-FAIL-2]
+2026-09-23T09:51:53.180+07:00 TRACE 28148 --- [payment-service] [ntainer#2-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (4:BIGINT) <- [1790131563938]
+2026-09-23T09:51:53.181+07:00 TRACE 28148 --- [payment-service] [ntainer#2-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [null]
+2026-09-23T09:51:53.181+07:00 TRACE 28148 --- [payment-service] [ntainer#2-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [COMPLETED]
+2026-09-23T09:51:53.182+07:00  INFO 28148 --- [payment-service] [ntainer#2-0-C-1] c.session14.saga.payment.PaymentService  : PaymentCompleted: orderId=1790131563938 correlationId=1790131563938
+2026-09-23T09:51:53.182+07:00  INFO 28148 --- [payment-service] [ntainer#2-0-C-1] c.session14.saga.common.EventPublisher   : Saga event publish started: topic=payment-events type=PaymentCompleted eventId=3886a92a-1506-470d-b2c7-119cf4e48cb3 correlationId=1790131563938 orderId=1790131563938 productId=4
+2026-09-23T09:51:53.195+07:00  INFO 28148 --- [payment-service] [vice-producer-1] c.session14.saga.common.EventPublisher   : Saga event publish completed: topic=payment-events partition=0 offset=23 type=PaymentCompleted eventId=3886a92a-1506-470d-b2c7-119cf4e48cb3 correlationId=1790131563938
+2026-09-23T09:51:53.227+07:00  WARN 28148 --- [payment-service] [ntainer#1-0-C-1] c.session14.saga.payment.PaymentService  : Payment compensation started: inventory failed orderId=1790131563938 reason=Out of stock: only 0 left
+2026-09-23T09:51:53.228+07:00 DEBUG 28148 --- [payment-service] [ntainer#1-0-C-1] org.hibernate.SQL                        : select p1_0.id,p1_0.amount,p1_0.created_at,p1_0.customer_id,p1_0.order_id,p1_0.reason,p1_0.status from saga_payments p1_0 where p1_0.order_id=?
+2026-09-23T09:51:53.229+07:00 TRACE 28148 --- [payment-service] [ntainer#1-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [1790131563938]
+2026-09-23T09:51:53.233+07:00  INFO 28148 --- [payment-service] [ntainer#1-0-C-1] c.session14.saga.payment.PaymentService  : REFUND completed: orderId=1790131563938 correlationId=1790131563938 reason=Out of stock: only 0 left
+2026-09-23T09:51:53.234+07:00  INFO 28148 --- [payment-service] [ntainer#1-0-C-1] c.session14.saga.common.EventPublisher   : Saga event publish started: topic=payment-events type=PaymentRefunded eventId=7b20def9-8a19-4af7-9695-60fe54832d9e correlationId=1790131563938 orderId=1790131563938 productId=4
+2026-09-23T09:51:53.237+07:00 DEBUG 28148 --- [payment-service] [ntainer#1-0-C-1] org.hibernate.SQL                        : update saga_payments set amount=?,created_at=?,customer_id=?,order_id=?,reason=?,status=? where id=?
+2026-09-23T09:51:53.238+07:00 TRACE 28148 --- [payment-service] [ntainer#1-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (1:NUMERIC) <- [80.00]
+2026-09-23T09:51:53.238+07:00 TRACE 28148 --- [payment-service] [ntainer#1-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (2:TIMESTAMP_UTC) <- [2026-09-23T02:51:53.178185Z]
+2026-09-23T09:51:53.238+07:00 TRACE 28148 --- [payment-service] [ntainer#1-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [DEMO-INVENTORY-FAIL-2]
+2026-09-23T09:51:53.238+07:00 TRACE 28148 --- [payment-service] [ntainer#1-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (4:BIGINT) <- [1790131563938]
+2026-09-23T09:51:53.238+07:00 TRACE 28148 --- [payment-service] [ntainer#1-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [Out of stock: only 0 left]
+2026-09-23T09:51:53.238+07:00 TRACE 28148 --- [payment-service] [ntainer#1-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [REFUNDED]
+2026-09-23T09:51:53.241+07:00 TRACE 28148 --- [payment-service] [ntainer#1-0-C-1] org.hibernate.orm.jdbc.bind              : binding parameter (7:BIGINT) <- [99]
+2026-09-23T09:51:53.258+07:00  INFO 28148 --- [payment-service] [vice-producer-1] c.session14.saga.common.EventPublisher   : Saga event publish completed: topic=payment-events partition=0 offset=24 type=PaymentRefunded eventId=7b20def9-8a19-4af7-9695-60fe54832d9e correlationId=1790131563938
